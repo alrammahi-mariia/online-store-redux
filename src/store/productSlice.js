@@ -27,6 +27,9 @@ export const productSlice = createSlice({
     clearCart: (state) => {
       state.cart = [];
     },
+    removeFromCart: (state, action) => {
+      state.cart = state.cart.filter((item) => item.id !== action.payload.id);
+    },
   },
   // Extra reducers are used for Async calls.
   extraReducers(builder) {
@@ -37,6 +40,6 @@ export const productSlice = createSlice({
 });
 
 // This is how we export from a reducer
-export const { addToCart, clearCart } = productSlice.actions;
+export const { addToCart, clearCart, removeFromCart } = productSlice.actions;
 
 export default productSlice.reducer;
